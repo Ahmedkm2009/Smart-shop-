@@ -30,4 +30,6 @@ jobs:
         run: mypy app --ignore-missing-imports || true
 
       - name: Run tests
-        run: pytest -q || echo "No tests yet – skipping"
+        env:
+          PYTHONPATH: .
+        run: pytest -q
