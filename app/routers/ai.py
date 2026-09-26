@@ -57,9 +57,13 @@ async def recommend_products(payload: RecommendRequest):
     # Simple keyword match for matched_products (MVP)
     query_lower = payload.query.lower()
     matched = [
-        p for p in _products.values()
-        if any(word in p["name"].lower() or word in (p["description"] or "").lower()
-               for word in query_lower.split() if len(word) > 2)
+        p
+        for p in _products.values()
+        if any(
+            word in p["name"].lower() or word in (p["description"] or "").lower()
+            for word in query_lower.split()
+            if len(word) > 2
+        )
     ][: payload.max_items]
 
     return RecommendResponse(
