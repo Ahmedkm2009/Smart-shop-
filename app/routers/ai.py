@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
-from app.services.llm import chat
 from app.routers.products import _products
+from app.services.llm import chat
 
 router = APIRouter(prefix="/ai", tags=["ai"])
 
